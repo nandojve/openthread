@@ -1,0 +1,38 @@
+#
+#	Library KConfig
+#
+############################################################
+
+choice
+	prompt "Platform"
+	default OPENTHREAD_PLATFORM_POSIX
+
+	config OPENTHREAD_PLATFORM_POSIX
+		bool "poxis"
+
+	config OPENTHREAD_PLATFORM_CC2538
+		bool "cc2538"
+
+endchoice # Platform
+
+config OPENTHREAD_PLATFORM
+	string
+	default "poxis"		if OPENTHREAD_PLATFORM_POSIX
+	default "cc2538"	if OPENTHREAD_PLATFORM_CC2538
+
+choice
+	prompt "Application"
+	default OPENTHREAD_APPLICATION_CLI
+
+	config OPENTHREAD_APPLICATION_CLI
+		bool "cli"
+
+	config OPENTHREAD_APPLICATION_NCP
+		bool "ncp"
+
+endchoice # Application
+
+config OPENTHREAD_APPLICATION
+	string
+	default "cli"		if OPENTHREAD_APPLICATION_CLI
+	default "ncp"		if OPENTHREAD_APPLICATION_NCP
