@@ -38,7 +38,7 @@
 #error "mbed TLS requires a platform with 8-bit chars"
 #endif
 
-#if defined(_WIN32)
+#if _WIN32
 #if !defined(MBEDTLS_PLATFORM_C)
 #error "MBEDTLS_PLATFORM_C is required on Windows"
 #endif

@@ -1,0 +1,18 @@
+#
+#	Libraries/openthread/src/core KConfig
+#
+############################################################
+
+comment "OT/Core"
+
+config OPENTHREAD_ENABLE_COMMISSIONER
+	bool "Enable commissioner"
+	default y
+
+config OPENTHREAD_ENABLE_DTLS
+	bool "Enable DTLS"
+	default n
+
+config OPENTHREAD_ENABLE_JOINER
+	bool "Enable joiner"
+	default y

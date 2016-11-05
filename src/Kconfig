@@ -1,0 +1,37 @@
+#
+#	Libraries/openthread/src KConfig
+#
+############################################################
+
+comment "OpenThread Network (OT)"
+
+choice
+	prompt "Interface Type"
+	default OT_IFACE_NONE
+
+	config OT_IFACE_NONE
+		bool "none"
+	config OT_IFACE_CLI
+		bool "Client Interfac (CLI)"
+	config OT_IFACE_NCP
+		bool "Network Co-Processor (NCP)"
+endchoice # Type
+
+config OT_IFACE_TYPE
+	string
+	option ot_iface_type
+	default "cli"		if OT_IFACE_CLI
+	default "ncp"		if OT_IFACE_NCP
+	default "none"		if OT_IFACE_NONE
+
+config OT_DIAG
+	bool "Diagnostics (diag)"
+	default n
+
+config OT_MULTIPLE_INSTANCE
+	bool "Multiple instances"
+	default n
+
+menu "Core"
+	source "$LIBRARY_DIR/stack/openthread/src/core/Kconfig"
+endmenu
