@@ -31,7 +31,8 @@ include $(abs_top_nlbuild_autotools_dir)/automake/pre.am
 # Always package (e.g. for 'make dist') these subdirectories.
 
 DIST_SUBDIRS                            = \
-    cc2538                                \
+    atmegarf                              \
+	cc2538                                \
     posix                                 \
     $(NULL)
 
@@ -45,6 +46,10 @@ if OPENTHREAD_EXAMPLES_POSIX
 SUBDIRS                                 = posix
 endif
 
+if OPENTHREAD_EXAMPLES_ATMEGARF
+SUBDIRS                                 = atmegarf
+endif
+
 if OPENTHREAD_EXAMPLES_CC2538
 SUBDIRS                                 = cc2538
 endif
@@ -52,6 +57,7 @@ endif
 # Always pretty (e.g. for 'make pretty') these subdirectories.
 
 PRETTY_SUBDIRS                          = \
+	atmegarf                              \
     cc2538                                \
     posix                                 \
     $(NULL)

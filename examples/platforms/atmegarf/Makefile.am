@@ -38,13 +38,12 @@ libopenthread_atmegarf_a_CPPFLAGS           = \
 
 libopenthread_atmegarf_a_SOURCES            = \
     alarm.c                                 \
-    misc.c                                  \
     logging.c                               \
+    misc.c                                  \
     platform.c                              \
     radio.c                                 \
     random.c                                \
     uart.c                                  \
-    startup-gcc.c                           \
     $(NULL)
 
 if OPENTHREAD_ENABLE_DIAG
@@ -54,8 +53,8 @@ libopenthread_atmegarf_a_SOURCES           += \
 endif
 
 noinst_HEADERS                            = \
-    atmegarf-reg.h                            \
-    platform-atmegarf.h                       \
+    atmegarfr2.h                            \
+    platform-atmegarf.h                     \
     $(NULL)
 
 if OPENTHREAD_BUILD_COVERAGE

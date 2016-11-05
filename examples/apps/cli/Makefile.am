@@ -65,6 +65,16 @@ ot_cli_LDADD                                                          += \
     $(NULL)
 endif
 
+if OPENTHREAD_EXAMPLES_ATMEGARF
+ot_cli_LDADD                                                          += \
+    $(top_builddir)/examples/platforms/atmegarf/libopenthread-atmegarf.a \
+    $(NULL)
+
+ot_cli_LDFLAGS                                                        += \
+    -T $(top_srcdir)/examples/platforms/atmegarf/avr6.xu                 \
+    $(NULL)
+endif
+
 if OPENTHREAD_EXAMPLES_CC2538
 ot_cli_LDADD                                                          += \
     $(top_builddir)/examples/platforms/cc2538/libopenthread-cc2538.a     \

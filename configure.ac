@@ -720,11 +720,11 @@ AC_DEFINE_UNQUOTED([OPENTHREAD_ENABLE_DHCP6_SERVER],[${OPENTHREAD_ENABLE_DHCP6_S
 
 AC_ARG_WITH(examples,
     [AS_HELP_STRING([--with-examples=TARGET],
-        [Specify the examples from one of: none, posix, cc2538 @<:@default=none@:>@.])],
+        [Specify the examples from one of: none, posix, atmegarf, cc2538 @<:@default=none@:>@.])],
     [
         case "${with_examples}" in
 
-        none|posix|cc2538)
+        none|posix|atmegarf|cc2538)
             ;;
         *)
             AC_MSG_ERROR([Invalid value ${with_examples} for --with-examples])
@@ -742,6 +742,11 @@ case ${with_examples} in
         AC_DEFINE_UNQUOTED([OPENTHREAD_EXAMPLES_POSIX],[${OPENTHREAD_EXAMPLES_POSIX}],[Define to 1 if you want to use posix examples])
         ;;
 
+    atmegarf)
+        OPENTHREAD_EXAMPLES_ATMEGARF=1
+        AC_DEFINE_UNQUOTED([OPENTHREAD_EXAMPLES_ATMEGARF],[${OPENTHREAD_EXAMPLES_ATMEGARF}],[Define to 1 if you want to use atmegarf examples])
+        ;;
+
     cc2538)
         OPENTHREAD_EXAMPLES_CC2538=1
         AC_DEFINE_UNQUOTED([OPENTHREAD_EXAMPLES_CC2538],[${OPENTHREAD_EXAMPLES_CC2538}],[Define to 1 if you want to use cc2538 examples])
@@ -757,6 +762,9 @@ AC_DEFINE_UNQUOTED([OPENTHREAD_EXAMPLES],[${OPENTHREAD_EXAMPLES}],[OpenThread ex
 
 AC_SUBST(OPENTHREAD_EXAMPLES_POSIX)
 AM_CONDITIONAL([OPENTHREAD_EXAMPLES_POSIX], [test "${OPENTHREAD_EXAMPLES}" = "posix"])
+
+AC_SUBST(OPENTHREAD_EXAMPLES_ATMEGARF)
+AM_CONDITIONAL([OPENTHREAD_EXAMPLES_ATMEGARF], [test "${OPENTHREAD_EXAMPLES}" = "atmegarf"])
 
 AC_SUBST(OPENTHREAD_EXAMPLES_CC2538)
 AM_CONDITIONAL([OPENTHREAD_EXAMPLES_CC2538], [test "${OPENTHREAD_EXAMPLES}" = "cc2538"])
@@ -895,6 +903,7 @@ examples/apps/Makefile
 examples/apps/cli/Makefile
 examples/apps/ncp/Makefile
 examples/platforms/Makefile
+examples/platforms/atmegarf/Makefile
 examples/platforms/cc2538/Makefile
 examples/platforms/posix/Makefile
 tools/Makefile
